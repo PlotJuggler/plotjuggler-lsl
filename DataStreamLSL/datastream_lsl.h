@@ -15,6 +15,8 @@
 #include "lsl_cpp.h"
 #include "streamer.h"
 
+using namespace PJ;
+
 class StreamLSLDialog : public QDialog
 {
     Q_OBJECT
@@ -36,7 +38,6 @@ private:
     std::set<std::string> prev_streams_;
 };
 
-
 class DataStreamLSL : public PJ::DataStreamer
 {
   Q_OBJECT
@@ -46,16 +47,13 @@ class DataStreamLSL : public PJ::DataStreamer
 public:
   DataStreamLSL();
 
-  virtual ~DataStreamLSL() override;
-
-  virtual bool start(QStringList*) override;
+  virtual bool start(QStringList* pre_selected_sources) override;
 
   virtual void shutdown() override;
 
-  virtual bool isRunning() const override
-  {
-    return _running;
-  }
+  virtual bool isRunning() const override;
+
+  virtual ~DataStreamLSL() override;
 
   virtual const char* name() const override
   {
@@ -74,4 +72,5 @@ private:
   bool _running;
 
   QMap<QThread *, Streamer *> _streams;
+
 };

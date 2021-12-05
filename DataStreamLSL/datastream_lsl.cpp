@@ -114,7 +114,7 @@ DataStreamLSL::~DataStreamLSL()
     shutdown();
 }
 
-bool DataStreamLSL::start(QStringList*)
+bool DataStreamLSL::start(QStringList* pre_selected_sources)
 {
     if (_running) {
         return _running;
@@ -171,6 +171,11 @@ void DataStreamLSL::shutdown()
     }
 }
 
+bool DataStreamLSL::isRunning() const
+{
+    return _running;
+}
+
 void DataStreamLSL::onDataReceived(std::vector<std::vector<double> > *chunk, std::vector<double> *stamps)
 {
     Streamer *streamer = qobject_cast<Streamer*>(sender());
@@ -182,7 +187,8 @@ void DataStreamLSL::onDataReceived(std::vector<std::vector<double> > *chunk, std
         std::vector<std::string> channel_names = streamer->channelList();
         for (unsigned int i = 0; i < channel_names.size(); ++i) {
 
-            auto& data = dataMap().getOrCreateNumberic( channel_names[i] );
+            auto &data = dataMap().getOrCreateNumeric(channel_names[i], {});
+//            auto& data = dataMap().getOrCreateNumberic( channel_names[i] );
 
             for (unsigned int j = 0; j < chunk->size(); ++j) {
                 data.pushBack(PJ::PlotData::Point( stamps->at(j), chunk->at(j).at(i)));

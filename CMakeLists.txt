@@ -92,7 +92,6 @@ elseif( DEFINED ENV{AMENT_PREFIX_PATH})
 
     #------------- Build without any ROS support ------------
 else()
-
     find_package(PlotJuggler REQUIRED)
     message(STATUS "PlotJuggler FOUND")
 
@@ -115,6 +114,7 @@ target_link_libraries(DataStreamLSL
     ${PJ_LIBRARIES}
     lsl-static
     lslboost
+    plotjuggler_base
     )
 
 
