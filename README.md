@@ -6,14 +6,7 @@ uses the Lab Streaming Layer.
 
 You can find additional information about LSL here: https://labstreaminglayer.readthedocs.io/info/intro.html
 
-Code contributed by: 
-
-- Celal Savur (@csavur)
-- Shitij Kumar (@spk4422)
-- Mazin Ali (@mazinms)
-
 ## Build
-
 To build this plugin, PlotJuggler must be installed in your system.
 
 For instance, in Linux, you should perform a full compilation and installation:
@@ -32,7 +25,7 @@ The compile this plugin:
 git clone --recurse-submodules https://github.com/PlotJuggler/plotjuggler-lsl.git
 cd plotjuggler-lsl
 mkdir build; cd build
-cmake ..
+cmake -DPlotJuggler_LIBRARY:FILEPATH="/usr/local/bin/" ..
 make
 sudo make install
 ```
@@ -44,3 +37,8 @@ If PlotJuggler can't find this plugin, check the folder where the file
 
     App -> Preferences... -> Plugins
 
+Code contributed by: 
+
+- Celal Savur (@csavur)
+- Shitij Kumar (@spk4422)
+- Mazin Ali (@mazinms)
