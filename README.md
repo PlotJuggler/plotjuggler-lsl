@@ -38,7 +38,7 @@ mkdir build; cd build
 cmake -DPlotJuggler_LIBRARY:FILEPATH="C:/YOURPATH/PlotJuggler/build/lib" -DPlotJuggler_INCLUDE_DIR:FILEPATH="C:/YOURPATH/PlotJuggler/plotjuggler_base/include" ..
 make
 sudo make install
-
+```
 
 ## Plugin installation
 
