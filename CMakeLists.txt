@@ -54,7 +54,7 @@ if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
     endif()
 endif()
 
-if(EXISTS "${PROJECT_SOURCE_DIR}/liblsl/CMakeLists.txt" AND NOT WIN32)
+if(EXISTS "${PROJECT_SOURCE_DIR}/liblsl/CMakeLists.txt")
     SET(LSL_ENABLE_TESTING FALSE CACHE BOOL "Build tests and run" FORCE)
     SET(LSL_ENABLE_CPACK FALSE CACHE BOOL "Enable CPack" FORCE)
     SET(LSL_BUILD_STATIC TRUE CACHE BOOL "Build static library" FORCE)
@@ -95,10 +95,10 @@ else()
     find_package(PlotJuggler REQUIRED)
     message(STATUS "PlotJuggler FOUND")
 
-    include_directories(${PlotJuggler_INCLUDE_DIRS})
-    list(APPEND ${PJ_LIBRARIES} ${PlotJuggler_LIBRARIES} )
-    set(PJ_PLUGIN_INSTALL_DIRECTORY bin )
+    include_directories(${PlotJuggler_INCLUDE_DIR})
+    link_directories(${PlotJuggler_LIBRARY})
 
+    set(PJ_PLUGIN_INSTALL_DIRECTORY bin )
 endif()
 
 #------- Create the libraries -------

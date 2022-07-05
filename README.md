@@ -30,6 +30,16 @@ make
 sudo make install
 ```
 
+The compile this plugin for Windows:
+```
+git clone --recurse-submodules https://github.com/PlotJuggler/plotjuggler-lsl.git
+cd plotjuggler-lsl
+mkdir build; cd build
+cmake -DPlotJuggler_LIBRARY:FILEPATH="C:/YOURPATH/PlotJuggler/build/lib" -DPlotJuggler_INCLUDE_DIR:FILEPATH="C:/YOURPATH/PlotJuggler/plotjuggler_base/include" ..
+make
+sudo make install
+
+
 ## Plugin installation
 
 If PlotJuggler can't find this plugin, check the folder where the file
